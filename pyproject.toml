@@ -1,0 +1,100 @@
+[build-system]
+requires = ["setuptools>=70"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "finbridge-graphrag"
+version = "0.1.0"
+description = "금융 데이터 파이프라인 기반 리서치·질의응답 AI 백엔드"
+requires-python = ">=3.11"
+dependencies = [
+    # Web framework
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.30.0",
+    "pydantic>=2.7.0",
+    "pydantic-settings>=2.3.0",
+    "python-multipart>=0.0.9",
+
+    # PostgreSQL
+    "sqlalchemy[asyncio]>=2.0.30",
+    "asyncpg>=0.29.0",
+    "alembic>=1.13.0",
+
+    # Kafka
+    "confluent-kafka>=2.4.0",
+
+    # Neo4j
+    "neo4j>=5.20.0",
+
+    # VectorDB (Qdrant)
+    "qdrant-client>=1.9.0",
+
+    # LangChain / RAG / LLM
+    "langchain>=0.2.0",
+    "langchain-anthropic>=0.1.15",
+    "langchain-openai>=0.1.14",
+    "langchain-community>=0.2.0",
+    "langchain-qdrant>=0.1.2",
+
+    # Data collection
+    "yfinance>=0.2.40",
+    "newsapi-python>=0.2.7",
+    "praw>=7.7.1",
+
+    # HTTP
+    "httpx>=0.27.0",
+    "aiohttp>=3.9.0",
+
+    # Utilities
+    "python-dotenv>=1.0.0",
+    "structlog>=24.1.0",
+    "tenacity>=8.3.0",
+]
+
+[project.optional-dependencies]
+spark = [
+    "pyspark>=3.5.0",
+]
+airflow = [
+    "apache-airflow>=2.9.0",
+    "apache-airflow-providers-postgres>=5.11.0",
+]
+dashboard = [
+    "streamlit>=1.35.0",
+    "plotly>=5.22.0",
+    "pandas>=2.2.0",
+]
+nlp = [
+    "transformers>=4.40.0",
+    "torch>=2.3.0",
+    "sentence-transformers>=3.0.0",
+]
+dev = [
+    "pytest>=8.2.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-cov>=5.0.0",
+    "httpx>=0.27.0",
+    "ruff>=0.4.0",
+    "mypy>=1.10.0",
+    "pre-commit>=3.7.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*", "pipeline*", "dashboard*"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = false
+ignore_missing_imports = true
