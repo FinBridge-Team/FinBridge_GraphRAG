@@ -44,3 +44,17 @@
 | UI | Streamlit |
 | 테스트 | pytest, httpx |
 | 인프라 | Docker Compose |
+
+## 브랜치 전략
+
+GitHub Flow 기반으로 운영합니다. 자세한 규칙은 [.github/BRANCH_STRATEGY.md](.github/BRANCH_STRATEGY.md)를 참고하세요.
+
+```
+feature/* → develop → main (릴리즈 태그)
+```
+
+| 브랜치    | 역할                        | force push |
+|-----------|-----------------------------|-----------|
+| `main`    | 프로덕션 릴리즈, 버전 태그  | 금지       |
+| `develop` | 기능 통합 및 검증           | 금지       |
+| `feature/*` | 개발 작업 단위            | 허용       |
