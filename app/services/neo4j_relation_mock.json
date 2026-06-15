@@ -1,0 +1,47 @@
+{
+  "source_system": "Neo4j",
+  "agent_name": "Neo4j Graph Agent",
+  "description": "Mock result that simulates a graph traversal over companies, events, and news nodes.",
+  "cypher_examples": [
+    {
+      "name": "company_event_relation",
+      "cypher": "MATCH (c:Company)-[r]->(e:Event) WHERE c.name CONTAINS $keyword RETURN c.name, type(r), e.name, e.event_date LIMIT 10;"
+    },
+    {
+      "name": "company_to_company_relation",
+      "cypher": "MATCH (a:Company)-[r]->(b:Company) WHERE a.name CONTAINS $keyword OR b.name CONTAINS $keyword RETURN a.name, type(r), b.name, r.description LIMIT 10;"
+    }
+  ],
+  "relations": [
+    {
+      "from": "NVIDIA",
+      "relation": "FOUNDRY_CUSTOMER_OF",
+      "to": "TSMC",
+      "description": "NVIDIA designs AI accelerators and is assumed to depend on TSMC advanced-node manufacturing capacity in this mock graph."
+    },
+    {
+      "from": "NVIDIA",
+      "relation": "RELATED_TO_EVENT",
+      "to": "AI accelerator demand expansion",
+      "description": "NVIDIA is connected to AI accelerator demand expansion through GPU and accelerator supply themes."
+    },
+    {
+      "from": "Samsung Electronics",
+      "relation": "COMPETES_IN",
+      "to": "HBM memory market",
+      "description": "Samsung Electronics is connected to HBM competition and memory investment themes."
+    },
+    {
+      "from": "Apple",
+      "relation": "RELATED_TO_EVENT",
+      "to": "On-device AI feature expansion",
+      "description": "Apple is connected to on-device AI feature expansion in this mock graph."
+    },
+    {
+      "from": "TSMC",
+      "relation": "RELATED_TO_EVENT",
+      "to": "Advanced-node capacity planning",
+      "description": "TSMC is connected to advanced-node capacity planning and AI chip manufacturing demand."
+    }
+  ]
+}

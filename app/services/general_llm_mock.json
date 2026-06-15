@@ -1,0 +1,5 @@
+{
+  "source_system": "None",
+  "agent_name": "General LLM Agent",
+  "description": "This file is intentionally not used for answer grounding. General questions are answered directly by OpenAI LLM."
+}

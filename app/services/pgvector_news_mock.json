@@ -1,0 +1,37 @@
+{
+  "source_system": "pgvector",
+  "agent_name": "pgvector RAG Agent",
+  "description": "Mock result that simulates vector search over embedded news chunks.",
+  "embedding_model_hint": "text-embedding-3-small 또는 유사 임베딩 모델을 사용했다고 가정",
+  "retrieval_query_template": "SELECT title, chunk_text, similarity_score FROM news_chunks ORDER BY embedding <=> :query_embedding LIMIT 3;",
+  "chunks": [
+    {
+      "title": "NVIDIA expands AI accelerator roadmap",
+      "company": "NVIDIA",
+      "event_type": "product_roadmap",
+      "similarity_score": 0.91,
+      "chunk_text": "NVIDIA is assumed to be strengthening its AI accelerator roadmap while demand from hyperscalers remains strong. This is mock news content for RAG demonstration."
+    },
+    {
+      "title": "TSMC capacity planning remains tied to AI chip demand",
+      "company": "TSMC",
+      "event_type": "supply_chain",
+      "similarity_score": 0.87,
+      "chunk_text": "TSMC is assumed to be adjusting advanced-node capacity planning in response to demand from AI chip customers. This is mock news content for RAG demonstration."
+    },
+    {
+      "title": "Samsung Electronics highlights HBM investment direction",
+      "company": "Samsung Electronics",
+      "event_type": "investment",
+      "similarity_score": 0.84,
+      "chunk_text": "Samsung Electronics is assumed to be emphasizing HBM-related investment and memory competitiveness. This is mock news content for RAG demonstration."
+    },
+    {
+      "title": "Apple focuses on on-device AI features",
+      "company": "Apple",
+      "event_type": "ai_product",
+      "similarity_score": 0.80,
+      "chunk_text": "Apple is assumed to be expanding on-device AI features across devices. This is mock news content for RAG demonstration."
+    }
+  ]
+}

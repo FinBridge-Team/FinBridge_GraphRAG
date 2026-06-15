@@ -1,0 +1,69 @@
+{
+  "source_system": "PostgreSQL",
+  "agent_name": "PostgreSQL NL2SQL Agent",
+  "description": "Mock result that simulates a PostgreSQL stock_prices query result.",
+  "schema_hint": {
+    "table": "stock_prices",
+    "columns": ["company_name", "ticker", "trade_date", "close_price", "currency", "change_amount", "change_percent", "volume", "per"]
+  },
+  "nl2sql_examples": [
+    {
+      "question_pattern": "recent stock price",
+      "sql": "SELECT trade_date, close_price, currency, change_amount, change_percent, volume, per FROM stock_prices WHERE company_name = :company_name OR ticker = :ticker ORDER BY trade_date DESC LIMIT 5;"
+    }
+  ],
+  "rows": [
+    {
+      "company_name": "Apple",
+      "company_name_ko": "애플",
+      "ticker": "AAPL",
+      "trade_date": "2026-06-12",
+      "close_price": 198.42,
+      "currency": "USD",
+      "change_amount": 1.36,
+      "change_percent": 0.69,
+      "volume": 52430000,
+      "per": 29.8,
+      "note": "최근 5거래일 기준 완만한 반등 흐름으로 가정한 mock row"
+    },
+    {
+      "company_name": "NVIDIA",
+      "company_name_ko": "엔비디아",
+      "ticker": "NVDA",
+      "trade_date": "2026-06-12",
+      "close_price": 145.75,
+      "currency": "USD",
+      "change_amount": 2.15,
+      "change_percent": 1.50,
+      "volume": 386100000,
+      "per": 41.2,
+      "note": "AI 반도체 수요 기대가 반영된 mock row"
+    },
+    {
+      "company_name": "Samsung Electronics",
+      "company_name_ko": "삼성전자",
+      "ticker": "005930.KS",
+      "trade_date": "2026-06-12",
+      "close_price": 82000,
+      "currency": "KRW",
+      "change_amount": 900,
+      "change_percent": 1.11,
+      "volume": 18200000,
+      "per": 18.4,
+      "note": "HBM 기대감이 일부 반영된 mock row"
+    },
+    {
+      "company_name": "TSMC",
+      "company_name_ko": "TSMC",
+      "ticker": "TSM",
+      "trade_date": "2026-06-12",
+      "close_price": 178.30,
+      "currency": "USD",
+      "change_amount": 0.92,
+      "change_percent": 0.52,
+      "volume": 13450000,
+      "per": 25.6,
+      "note": "파운드리 수요 견조를 가정한 mock row"
+    }
+  ]
+}
