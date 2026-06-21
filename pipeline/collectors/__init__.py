@@ -1,0 +1,1 @@
+# pipeline/collectors package
